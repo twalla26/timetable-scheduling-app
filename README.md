@@ -1,2 +1,2 @@
-# timetable-schedule-app
+# timetable-scheduling-app
 it's an application that adjusts the appointed time through the shared timetable.
