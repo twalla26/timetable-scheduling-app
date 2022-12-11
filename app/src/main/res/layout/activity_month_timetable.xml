@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MonthTimetable">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#CCF2FF"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PARTICIPATE"
+            android:textSize="25dp"
+            android:background="#00000000"
+            android:textColor="@color/black"
+            android:fontFamily="@font/font1"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="70dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제목"
+                android:textSize="25dp"
+                android:background="#00000000"
+                android:textColor="@color/black"
+                android:fontFamily="@font/font1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="120dp"
+            android:paddingRight="30dp"
+            android:paddingLeft="30dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/detail_info"
+                android:hint="약속 상세정보 적기"
+                android:textSize="20dp"
+                android:fontFamily="@font/font1"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:adjustViewBounds="true"
+                android:background="#ffffff"
+                android:scaleType="fitCenter"/>
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom|center"
+            android:paddingTop="350dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#CCF2FF"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="left">
+
+                    <ImageButton
+                        android:id="@+id/calendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:adjustViewBounds="true"
+                        android:background="#00000000"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/ic_baseline_calendar_month_24"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="calendar"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:fontFamily="@font/font1"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#B5E7F8">
+
+                <TextView
+                    android:text="일"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:text="월"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="화"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="수"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="목"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="금"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="토"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sunday0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/monday0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tuesday0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/wednesday0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/thursday0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/friday0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saturday0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+
+
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sunday1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/monday1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tuesday1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/wednesday1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/thursday1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/friday1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saturday1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sunday2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/monday2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tuesday2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/wednesday2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/thursday2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/friday2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saturday2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sunday3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/monday3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tuesday3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/wednesday3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/thursday3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/friday3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saturday3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sunday4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/monday4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tuesday4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/wednesday4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/thursday4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/friday4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saturday4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:background="@drawable/cell_shape1"/>
+
+
+            </TableRow>
+        </TableLayout>
+
+    </FrameLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
