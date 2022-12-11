@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import android.widget.CalendarView;
@@ -20,6 +21,7 @@ public class MakeActivity extends AppCompatActivity {
 
     ImageButton boxbutton, boxbutton2, boxbutton3, boxbutton4;
     ImageButton checkbutton, checkbutton2, checkbutton3, checkbutton4;
+    EditText duration,time;
 
     CalendarView cal;
     TextView tv_text;
@@ -42,9 +44,9 @@ public class MakeActivity extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
 
-        week=calendar.get(Calendar.DAY_OF_WEEK);
-        daytoday=calendar.get(Calendar.DAY_OF_MONTH);
-        monthtoday=calendar.get(Calendar.MONTH);
+        week=calendar.get(Calendar.DAY_OF_WEEK);//요일
+        daytoday=calendar.get(Calendar.DAY_OF_MONTH);//날짜
+        monthtoday=calendar.get(Calendar.MONTH);//월
         cal = findViewById(R.id.calendarView);
 
         tv_text = findViewById(R.id.tv_text);
@@ -55,19 +57,30 @@ public class MakeActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
                 int a=day-daytoday;
                 if(monthtoday!=month){
+                while(monthtoday!=month){
                     if (monthtoday == 0 || monthtoday == 2 || monthtoday == 4 || monthtoday == 6 || monthtoday == 7 || monthtoday == 9 || monthtoday == 11) {
-                        a=31-daytoday+day;
+                        int b=31;
+                        a+=b;
                     }
                     else if(monthtoday==1){
-                        a=28-daytoday+day;
+                        int c=28;
+                        a+=c;
                     }
                     else{
-                        a=30-daytoday+day;
+                        int d=30;
+                        a+=d;
                     }
-                }
-                while(a>=7){
-                    a=a-7;
-                }
+                    if(monthtoday==11){
+                        monthtoday=0;
+                    }
+                    else{
+                        monthtoday++;
+                    }
+                    }}
+
+                    while (a >= 7) {
+                        a = a - 7;
+                    }
                 selectedweek=(week+a)%7;
                 if(selectedweek==0){
                     selectedweek=7;
@@ -97,6 +110,9 @@ public class MakeActivity extends AppCompatActivity {
                 }
 
                 tv_text.setText(year + "년 " + (month + 1) + "월 " + day + "일 " + date);
+                week=calendar.get(Calendar.DAY_OF_WEEK);//요일
+                daytoday=calendar.get(Calendar.DAY_OF_MONTH);//날짜
+                monthtoday=calendar.get(Calendar.MONTH);
             }
 
         });
@@ -113,7 +129,12 @@ public class MakeActivity extends AppCompatActivity {
 
         boxbutton = (ImageButton) findViewById(R.id.checkbox1);
         checkbutton = (ImageButton) findViewById(R.id.check1);
+        time=(EditText) findViewById(R.id.get_time);
+        duration=(EditText) findViewById(R.id.get_duration);
         checkbutton.setVisibility(View.INVISIBLE);
+        time.setVisibility(View.INVISIBLE);
+        duration.setVisibility(View.INVISIBLE);
+
 
         boxbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,10 +142,15 @@ public class MakeActivity extends AppCompatActivity {
                 if (i == 0) {
                     boxbutton.setVisibility(View.VISIBLE);
                     checkbutton.setVisibility(View.VISIBLE);
+                    boxbutton2.setVisibility(View.VISIBLE);
+                    checkbutton2.setVisibility(View.INVISIBLE);
+                    time.setVisibility(View.VISIBLE);
+                    duration.setVisibility(View.INVISIBLE);
                     i = 1;
                 } else {
                     boxbutton.setVisibility(View.VISIBLE);
                     checkbutton.setVisibility(View.INVISIBLE);
+                    time.setVisibility(View.INVISIBLE);
                     i = 0;
                 }
             }
@@ -140,10 +166,15 @@ public class MakeActivity extends AppCompatActivity {
                 if (j == 0) {
                     boxbutton2.setVisibility(View.VISIBLE);
                     checkbutton2.setVisibility(View.VISIBLE);
+                    checkbutton.setVisibility(View.INVISIBLE);
+                    checkbutton2.setVisibility(View.VISIBLE);
+                    time.setVisibility(View.INVISIBLE);
+                    duration.setVisibility(View.VISIBLE);
                     j = 1;
                 } else {
                     boxbutton2.setVisibility(View.VISIBLE);
                     checkbutton2.setVisibility(View.INVISIBLE);
+                    duration.setVisibility(View.INVISIBLE);
                     j = 0;
                 }
             }

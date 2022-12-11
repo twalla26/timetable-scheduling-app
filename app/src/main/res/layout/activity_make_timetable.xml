@@ -87,11 +87,16 @@
                 android:paddingTop="350dp"
                 android:paddingLeft="30dp">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingRight="160dp">
+            android:paddingRight="30dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -1804,6 +1809,38 @@
             </TableRow>
 
         </TableLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:paddingTop="20dp"
+                    android:orientation="horizontal"
+                    android:paddingRight="30dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_copycode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cell_shape2"
+                    android:fontFamily="@font/font1"
+                    android:text="코드복사"
+                    android:layout_marginRight="20dp"
+                    android:textSize="15dp" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape2"
+                        android:fontFamily="@font/font1"
+                        android:text="저장"
+                        android:textSize="15dp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
 
     </FrameLayout>
 
