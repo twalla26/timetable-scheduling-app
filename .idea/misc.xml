@@ -11,6 +11,11 @@
         <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
         <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/activity_make_timetable.xml" value="0.11246200607902736" />
         <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/activity_register.xml" value="0.11246200607902736" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2741409301757812" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3182291666666667" />
+        <entry key="app/src/main/res/layout/activity_make_timetable.xml" value="0.3182291666666667" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.3182291666666667" />
+        <entry key="app/src/main/res/xml/network_security_config.xml" value="0.303125" />
       </map>
     </option>
   </component>
