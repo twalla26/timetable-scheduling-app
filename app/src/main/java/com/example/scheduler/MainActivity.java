@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MakeTimetable.class);
+                Intent intent = new Intent(MainActivity.this, MakeActivity.class);
                 startActivity(intent); //액티비티 이동
             }
         }));

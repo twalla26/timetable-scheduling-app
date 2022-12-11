@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/drawer_layout"
+    tools:context=".MakeActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#CCF2FF"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MAKE"
+                    android:textSize="25dp"
+                    android:background="#00000000"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/font1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="90dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:paddingLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="제목"
+                    android:gravity="center_vertical"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/font1"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="150dp"
+                android:paddingLeft="120dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/check1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_baseline_check_24"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="150dp"
+                android:paddingLeft="260dp"
+                android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/check2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_baseline_check_24"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="160dp"
+                android:paddingLeft="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:paddingLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="기간"
+                    android:gravity="center_vertical"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/font1"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="150dp"
+                android:paddingLeft="120dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/checkbox1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_baseline_check_box_outline_blank_24"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="일주일"
+                android:textSize="20dp"
+                android:fontFamily="@font/font1"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="150dp"
+                android:paddingLeft="260dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/checkbox2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_baseline_check_box_outline_blank_24"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="한 달"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/font1"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="220dp"
+                android:gravity="center"
+                android:orientation="vertical">
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxDate="mm/dd/yyyy"
+                android:minDate="mm/dd/yyyy"/>
+
+                <TextView
+                    android:id="@+id/tv_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:fontFamily="@font/font1"
+                    android:text="날짜를 선택해주세요." />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="600dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/checkbox5"
+                    android:hint="약속 상세정보 적기"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/font1"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:adjustViewBounds="true"
+                    android:background="#ffffff"
+                    android:scaleType="fitCenter"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:paddingTop="810dp"
+                android:paddingRight="30dp">
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/cell_shape2"
+                    android:fontFamily="@font/font1"
+                    android:text="등록"
+                    android:textSize="15dp" />
+
+
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+    </ScrollView>
+</LinearLayout>
+
