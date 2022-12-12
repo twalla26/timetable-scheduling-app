@@ -80,11 +80,38 @@
                 android:scaleType="fitCenter"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingTop="330dp"
+                android:orientation="horizontal"
+                android:paddingLeft="30dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_possible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cell_shape2"
+                    android:fontFamily="@font/font1"
+                    android:text="완전 가능"
+                    android:layout_marginRight="20dp"
+                    android:textSize="15dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_ambiguous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cell_shape2"
+                    android:fontFamily="@font/font1"
+                    android:text="조금 가능"
+                    android:textSize="15dp" />
+            </LinearLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="350dp"
+                android:paddingTop="390dp"
                 android:paddingLeft="30dp">
 
                 <LinearLayout
@@ -1814,7 +1841,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:paddingTop="20dp"
+                    android:paddingTop="60dp"
                     android:orientation="horizontal"
                     android:paddingRight="30dp">
 

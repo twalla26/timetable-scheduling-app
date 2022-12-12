@@ -122,7 +122,7 @@ public class MakeActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MakeActivity.this, MakeTimetable.class);
+                Intent intent = new Intent(MakeActivity.this, MonthTimetable.class);
                 startActivity(intent); //액티비티 이동
             }
         }));
