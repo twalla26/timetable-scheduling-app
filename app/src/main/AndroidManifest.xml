@@ -19,6 +19,12 @@
         android:theme="@style/Theme.Scheduler"
         tools:targetApi="31">
         <activity
+            android:name=".ResultMonth"
+            android:exported="false" />
+        <activity
+            android:name=".ResultTime"
+            android:exported="false" />
+        <activity
             android:name=".MonthTimetable"
             android:exported="false" />
         <activity

@@ -27,6 +27,16 @@ public class MonthTimetable extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_month_timetable);
 
+        AppCompatButton btn_save = (AppCompatButton) findViewById(R.id.btn_save);
+        btn_save.setOnClickListener((new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MonthTimetable.this, ResultMonth.class);
+                startActivity(intent); //액티비티 이동
+            }
+        }));
+
 
         btn_ambiguous=(AppCompatButton) findViewById(R.id.btn_ambiguous);
         btn_possible=(AppCompatButton) findViewById(R.id.btn_possible);

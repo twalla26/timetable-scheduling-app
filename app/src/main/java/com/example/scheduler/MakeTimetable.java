@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.view.ViewCompat;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,16 @@ public class MakeTimetable extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_timetable);
+
+        AppCompatButton btn_save = (AppCompatButton) findViewById(R.id.btn_save);
+        btn_save.setOnClickListener((new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MakeTimetable.this, ResultTime.class);
+                startActivity(intent); //액티비티 이동
+            }
+        }));
 
 
         monday0 = (Button) findViewById(R.id.monday0);
