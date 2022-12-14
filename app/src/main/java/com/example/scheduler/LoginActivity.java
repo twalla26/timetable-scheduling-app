@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -16,8 +18,16 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 
+
+import java.io.IOException;
+import java.util.List;
+
+import okhttp3.Cookie;
+import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -71,49 +81,18 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 try {
-                    jsonObject.put("user_id", userID);
-                    jsonObject.put("password", password);
+                    jsonObject.put("user_id", userid);
+                    jsonObject.put("password", _password);
                 } catch (JSONException e){
                     e.printStackTrace();
                 }
-
                 sendRequest(jsonObject, URL);
-
-                if (response.contains("password")){
-                    LoginActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                } else if (response.contains("user")) {
-                    LoginActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(), "존재하지 않는 아이디 입니다.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                } else if (response.contains("success")){
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                } else {
-                    LoginActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(), "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
             }
         });
     }
 
     public void sendRequest(JSONObject inputJSON, String URL){
         class sendData extends AsyncTask<Void, Void, String> {
-            private String _response;
-            public String getResponse(){
-                return this._response;
-            }
 
             @Override
             protected void onPreExecute() {super.onPreExecute();}
@@ -134,7 +113,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             protected String doInBackground(Void... voids) {
                 try {
-                    OkHttpClient client = new OkHttpClient();
+                    PersistentCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(LoginActivity.this));
+                    List<Cookie> cookieList = cookieJar.loadForRequest(HttpUrl.parse(URL));
+
+                    OkHttpClient client = new OkHttpClient.Builder()
+                            .cookieJar(cookieJar)
+                            .build();
+
                     RequestBody requestBody = RequestBody.create(
                             MediaType.parse("application/json; charset=uft-8"),
                             inputJSON.toString()
@@ -145,15 +130,76 @@ public class LoginActivity extends AppCompatActivity {
                             .build();
                     Response responses = null;
                     responses = client.newCall(request).execute();
-                    _response = responses.body().string();
+                    String res_cookie = responses.headers().get("Set-Cookie");
+                    System.out.println(res_cookie);
+
+                    response = responses.body().string();
+                    System.out.println(response);
+
+                    String id = res_cookie.split("=")[0];
+                    String value = res_cookie.split("=")[1].toString().split(";")[0];
+                    String session = id + "=" + value;
+
+                    System.out.println(id);
+                    System.out.println(value);
+
+                    Cookie cookie = new Cookie.Builder()
+                            .name(id)
+                            .value(value)
+                            .domain("39.124.122.32")
+                            .path("/auth/checkSession/")
+                            .build();
+                    cookieList.add(cookie);
+                    System.out.println(cookieList);
+
+
+                    setString(id, session);
+                    String check = getString(id);
+                    System.out.println(check);
+
+                    if (response.contains("password")){
+                        LoginActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else if (response.contains("wrong ID")) {
+                        LoginActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "존재하지 않는 아이디 입니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else if (response.contains("success")){
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    } else {
+                        LoginActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 return null;
             }
+            private void setString(String key, String value){
+                SharedPreferences prefs = LoginActivity.this.getSharedPreferences("session", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString(key, value);
+                editor.commit();
+            }
+            public String getString(String key) {
+                SharedPreferences prefs = LoginActivity.this.getSharedPreferences("session", Context.MODE_PRIVATE);
+                String value = prefs.getString(key, " ");
+                return value;
+            }
         }
         sendData sendData = new sendData();
         sendData.execute();
-        response = sendData.getResponse();
     }
 }

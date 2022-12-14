@@ -40,7 +40,7 @@ public class MonthTimetable extends AppCompatActivity {
 
         btn_ambiguous=(AppCompatButton) findViewById(R.id.btn_ambiguous);
         btn_possible=(AppCompatButton) findViewById(R.id.btn_possible);
-        btn_delete=(AppCompatButton) findViewById(R.id.btn_delete);
+        btn_delete=(AppCompatButton) findViewById(R.id.btn_cancel);
 
         btn_ambiguous.setOnClickListener(new View.OnClickListener() {
             @Override

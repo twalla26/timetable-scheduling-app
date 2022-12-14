@@ -113,7 +113,7 @@
                     android:textSize="15dp" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_delete"
+                    android:id="@+id/btn_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/cell_shape2"
@@ -134,6 +134,7 @@
                     android:layout_marginLeft="9dp"
                     android:layout_marginRight="9dp" />
             </LinearLayout>
+
 
             <TableLayout
                 android:layout_width="match_parent"
