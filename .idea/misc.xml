@@ -7,17 +7,21 @@
         <entry key="..\:/project_DesignThinking/project4/app/src/main/res/drawable/cell_shape.xml" value="0.1" />
         <entry key="..\:/project_DesignThinking/project4/app/src/main/res/drawable/cell_shape1.xml" value="0.1" />
         <entry key="..\:/project_DesignThinking/project4/app/src/main/res/drawable/cell_shape2.xml" value="0.1" />
-        <entry key="..\:/project_DesignThinking/project4/app/src/main/res/drawable/cell_shape_ambiguous.xml" value="0.254" />
-        <entry key="..\:/project_DesignThinking/project4/app/src/main/res/drawable/cell_shape_possible.xml" value="0.254" />
-        <entry key="..\:/project_DesignThinking/project4/app/src/main/res/drawable/selector.xml" value="0.254" />
         <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/activity_login.xml" value="0.11246200607902736" />
         <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
-        <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/activity_make.xml" value="0.1" />
-        <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/activity_make_timetable.xml" value="0.2196969696969697" />
-        <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/activity_month_timetable.xml" value="0.21557971014492755" />
+        <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/activity_make_timetable.xml" value="0.11246200607902736" />
         <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/activity_register.xml" value="0.11246200607902736" />
-        <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/content_make.xml" value="0.1933876811594203" />
-        <entry key="..\:/project_DesignThinking/project4/app/src/main/res/layout/fragment_first.xml" value="0.1933876811594203" />
+        <entry key="app/src/main/res/drawable/cell_shape.xml" value="0.1635" />
+        <entry key="app/src/main/res/drawable/cell_shape1.xml" value="0.1635" />
+        <entry key="app/src/main/res/drawable/cell_shape2.xml" value="0.3266937255859375" />
+        <entry key="app/src/main/res/drawable/cell_shape_possible.xml" value="0.2875" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2741409301757812" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3182291666666667" />
+        <entry key="app/src/main/res/layout/activity_make.xml" value="0.102803738317757" />
+        <entry key="app/src/main/res/layout/activity_make_timetable.xml" value="0.3182291666666667" />
+        <entry key="app/src/main/res/layout/activity_month_timetable.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.3182291666666667" />
+        <entry key="app/src/main/res/xml/network_security_config.xml" value="0.303125" />
       </map>
     </option>
   </component>

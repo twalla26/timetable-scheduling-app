@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.scheduler.LoginActivity;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,16 +28,12 @@ import okhttp3.Response;
 public class RegisterActivity extends AppCompatActivity {
     private boolean isIdChecked = false;
     private EditText userName, userID, password, passwordCh, email;
-    private String URL, userid;
-    static private String response;
+    private String URL;
+    private String response = " ";
     private AlertDialog dialog;
     private Button registerbtn, validatebtn;
     JSONObject idJSON = new JSONObject();
     JSONObject inputJSON = new JSONObject();
-
-    public void setUserid(String _userid){
-        userid = _userid;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final String userid = userID.getText().toString();
-                URL = "http://172.20.10.1:5000/auth/signup/check_dup"; // change address for validata
+                URL = "http://59.18.221.32:5000/auth/signup/check_dup"; // change address for validata
 
                 if (userid.equals("")){
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
@@ -68,30 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                 } catch (JSONException e){
                     e.printStackTrace();
                 }
-                sendRequest(idJSON, URL);
-                System.out.println(response);
-                if (!response.contains("exist")){
-                    RegisterActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                            dialog = builder.setMessage("이미 존재하는 아이디입니다.").setPositiveButton("확인", null).create();
-                            dialog.show();
-                        }
-                    });
-                } else {
-                    RegisterActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                            dialog = builder.setMessage("사용가능한 아이디입니다.").setPositiveButton("확인", null).create();
-                            dialog.show();
-                            isIdChecked = true;
-                            validatebtn.setBackgroundColor(Color.GRAY);
-                        }
-                    });
-                    setUserid(userid);
-                }
+                sendRequestDup(idJSON, URL);
             }
         });
 
@@ -100,12 +75,13 @@ public class RegisterActivity extends AppCompatActivity {
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String userid = userID.getText().toString();
                 final String username = userName.getText().toString();
                 final String _password = password.getText().toString();
                 final String _passwordCh = passwordCh.getText().toString();
                 final String _email = email.getText().toString();
 
-                URL = "http://172.20.10.1:5000/auth/signup";
+                URL = "http://59.18.221.32:5000/auth/signup";
 
                 if (username.equals("") || _password.equals("") || _passwordCh.equals("") || _email.equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
@@ -139,36 +115,13 @@ public class RegisterActivity extends AppCompatActivity {
                 } catch (JSONException e){
                     e.printStackTrace();
                 }
-                sendRequest(inputJSON, URL);
-                if (response.contains("success")){
-                    RegisterActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                } else {
-                    RegisterActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(), "회원가입에 실패했습니다. 다시 시도해주세요", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-
+                sendRequestReg(inputJSON, URL);
             }
         });
-
     }
     // send Request to Server and get response
-    public void sendRequest(JSONObject inputJSON, String URL){
+    public void sendRequestDup(JSONObject inputJSON, String URL){
         class sendData extends AsyncTask<Void, Void, String> {
-
-            public String getResponse(){
-                return response;
-            }
 
             @Override
             protected void onPreExecute() {super.onPreExecute();}
@@ -202,6 +155,27 @@ public class RegisterActivity extends AppCompatActivity {
                     responses = client.newCall(request).execute();
                     response = responses.body().string();
                     System.out.println(response);
+                    if (response.contains("unusable")){
+                        RegisterActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                dialog = builder.setMessage("이미 존재하는 아이디입니다.").setPositiveButton("확인", null).create();
+                                dialog.show();
+                            }
+                        });
+                    } else if (response.contains("usable")){
+                        RegisterActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                dialog = builder.setMessage("사용가능한 아이디입니다.").setPositiveButton("확인", null).create();
+                                dialog.show();
+                                isIdChecked = true;
+                                validatebtn.setBackgroundColor(Color.GRAY);
+                            }
+                        });
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -210,6 +184,66 @@ public class RegisterActivity extends AppCompatActivity {
         }
         sendData sendData = new sendData();
         sendData.execute();
-        response = sendData.getResponse();
+    }
+    public void sendRequestReg(JSONObject inputJSON, String URL){
+        class sendData extends AsyncTask<Void, Void, String> {
+
+            @Override
+            protected void onPreExecute() {super.onPreExecute();}
+            @Override
+            protected void onPostExecute(String s) {super.onPostExecute(s);}
+            @Override
+            protected void onProgressUpdate(Void... values){
+                super.onProgressUpdate(values);
+            }
+            @Override
+            protected void onCancelled(String s){
+                super.onCancelled(s);
+            }
+            @Override
+            protected void onCancelled(){
+                super.onCancelled();
+            }
+            @Override
+            protected String doInBackground(Void... voids) {
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    RequestBody requestBody = RequestBody.create(
+                            MediaType.parse("application/json; charset=uft-8"),
+                            inputJSON.toString()
+                    );
+                    Request request = new Request.Builder()
+                            .post(requestBody)
+                            .url(URL)
+                            .build();
+                    Response responses = null;
+                    responses = client.newCall(request).execute();
+                    response = responses.body().string();
+                    System.out.println(response);
+                    if (response.contains("success")){
+                        RegisterActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    } else {
+                        RegisterActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "회원가입에 실패했습니다. 다시 시도해주세요", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        }
+        sendData sendData = new sendData();
+        sendData.execute();
     }
 }
