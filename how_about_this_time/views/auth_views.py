@@ -11,16 +11,16 @@ from how_about_this_time.models import User
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-@bp.route('/signup/', methods=('POST'))
+@bp.route('/signup/', methods=["POST"])
 def signup(): # 회원가입 함수
-    form = UserCreateForm() 
+    form = UserCreateForm()
     if request.method == 'POST':
         ip = request.remote_addr
         date = datetime.now()
         user = User.query.filter_by(user_id=form.user_id.data).first() # first(): 첫번째로 매칭되는 인스턴스만 달라
         if not user: # 매칭되는 인스턴스가 없으면 -> 회원가입 진행
             user = User(user_id=form.user_id.data, 
-                        password=generate_password_hash(form.password1.data), 
+                        password=generate_password_hash(form.password.data), 
                         username=form.username.data, 
                         email=form.email.data) # 새로운 유저 저장
             db.session.add(user) # 디비에 신규 유저 저장
@@ -34,7 +34,7 @@ def signup(): # 회원가입 함수
             return jsonify({"signup" : "error: user already exists"})
 
 
-@bp.route('/login/', methods=('POST'))
+@bp.route('/login/', methods=["POST"])
 def login(): # 로그인 함수
     form = UserLoginForm()
     if request.method == 'POST':
@@ -44,11 +44,11 @@ def login(): # 로그인 함수
         if not user: # 가입된 유저가 아닌 경우
             print(date)
             print("[로그]로그인 시도 중 아이디를 잘못 입력했습니다. (IP:", str(ip)+")")
-            return jsonify({"login" : "error: long username"})
+            return jsonify({"error" : "wrong ID"})
         elif not (check_password_hash(user.password, form.password.data)): # 비밀번호가 틀렸을 경우
             print(date)
             print("[로그]로그인 시도 중 비밀번호를 잘못 입력했습니다. (IP:", str(ip)+")")
-            return jsonify({"login" : "error: wrong password"})
+            return jsonify({"error" : "wrong password"})
         else: # 아이디, 비번 모두 제대로 입력했을 경우
             session.clear() # 세션 초기화한 후
             session['user_id'] = user.id # 세션에 현재 로그인한 유저의 고유 번호 저장
@@ -84,7 +84,7 @@ def check_session():
         return jsonify({"result" : "login"})
 
 
-@bp.route('/singup/check_dup/', methods=('POST'))
+@bp.route('/signup/check_dup/', methods=["POST"])
 def check_dup():
     form = CheckDupForm()
     user = User.query.filter_by(user_id=form.user_id.data).first()
