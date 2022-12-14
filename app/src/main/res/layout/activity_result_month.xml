@@ -132,12 +132,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="50dp">
 
-                <CalendarView
-                    android:layout_width="match_parent"
-                    android:layout_height="366dp"
-                    android:layout_marginTop="280dp"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginRight="9dp" />
             </LinearLayout>
 
             <TableLayout
@@ -529,6 +523,67 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/saturday4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/sunday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/monday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/tuesday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/wednesday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/thursday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/friday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/saturday5"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_weight="3"

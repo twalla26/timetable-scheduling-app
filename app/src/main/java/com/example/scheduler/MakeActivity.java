@@ -52,7 +52,7 @@ public class MakeActivity extends AppCompatActivity {
     String titleS, contentS;
     AlertDialog dialog;
     JSONObject makeJSON = new JSONObject();
-    int firstDate = 0;
+    int firstDate;
 
     String URL = "http://59.18.221.32:5000/plan/make";
 
@@ -157,7 +157,7 @@ public class MakeActivity extends AppCompatActivity {
                 } else {
                     dayS = String.valueOf(day);
                 }
-                firstDate = Integer.parseInt(yearS+monthS+dayS) + date;
+                firstDate = Integer.parseInt(yearS+monthS+dayS + String.valueOf(selectedweek-1));
 
                 tv_text.setText(year + "년 " + (month + 1) + "월 " + day + "일 " + date);
                 week=calendar.get(Calendar.DAY_OF_WEEK);//요일
