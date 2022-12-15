@@ -100,18 +100,20 @@
                     android:id="@+id/first"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
                     android:text="first"
-                    android:textSize="25dp"
-                    android:layout_marginTop="2dp"
+                    android:textSize="15dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/font1"/>
 
                 <TextView
                     android:id="@+id/second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
                     android:text="second"
-                    android:textSize="25dp"
-                    android:layout_marginTop="2dp"
+                    android:textSize="15dp"
+                    android:layout_marginTop="3dp"
                     android:fontFamily="@font/font1"/>
 
                 <TextView
@@ -119,7 +121,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="third"
-                    android:textSize="25dp"
+                    android:textSize="15dp"
                     android:layout_marginTop="2dp"
                     android:fontFamily="@font/font1"/>
 
@@ -518,6 +520,67 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/saturday4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/sunday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/monday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/tuesday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/wednesday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/thursday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/friday5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/cell_shape1"
+                        android:gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/saturday5"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_weight="3"

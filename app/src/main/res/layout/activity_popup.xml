@@ -29,6 +29,7 @@
 
 
                 <EditText
+                    android:id="@+id/input"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:hint="코드를 입력하세요."

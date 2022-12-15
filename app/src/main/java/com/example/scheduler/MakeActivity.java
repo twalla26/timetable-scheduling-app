@@ -49,10 +49,11 @@ public class MakeActivity extends AppCompatActivity {
     Button register;
     String code, makedPer;
     String period, response, timeS;
-    String titleS, contentS;
+    String titleS, contentS="";
     AlertDialog dialog;
     JSONObject makeJSON = new JSONObject();
     int firstDate;
+    int firstDay;
 
     String URL = "http://59.18.221.32:5000/plan/make";
 
@@ -163,6 +164,7 @@ public class MakeActivity extends AppCompatActivity {
                 week=calendar.get(Calendar.DAY_OF_WEEK);//요일
                 daytoday=calendar.get(Calendar.DAY_OF_MONTH);//날짜
                 monthtoday=calendar.get(Calendar.MONTH);
+                firstDay = selectedweek-1;
             }
 
         });
@@ -173,6 +175,7 @@ public class MakeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 titleS = title.getText().toString();
                 timeS = time.getText().toString();
+                contentS = content.getText().toString();
                 if (titleS.equals("")){
                     AlertDialog.Builder builder = new AlertDialog.Builder(MakeActivity.this);
                     dialog = builder.setMessage("제목을 입력해주세요.").setPositiveButton("확인", null).create();
@@ -339,11 +342,13 @@ public class MakeActivity extends AppCompatActivity {
                             Intent intent = new Intent(MakeActivity.this, MonthTimetable.class);
                             intent.putExtra("code", code);
                             intent.putExtra("period", makedPer);
+                            intent.putExtra("firstDay", firstDay);
                             startActivity(intent);
                         } else if (response.contains("week")){
                             Intent intent = new Intent(MakeActivity.this, MakeTimetable.class);
                             intent.putExtra("code", code);
                             intent.putExtra("period", makedPer);
+                            intent.putExtra("firstDay", firstDay);
                             startActivity(intent);
                         }
                     } else {

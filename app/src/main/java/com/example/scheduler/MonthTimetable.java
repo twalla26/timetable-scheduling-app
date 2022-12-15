@@ -49,7 +49,7 @@ public class MonthTimetable extends AppCompatActivity {
 
     Button save;
 
-    double[] result = new double[35];
+    double[] result = new double[42];
     double[] sun = new double[7];
     double[] mon = new double[7];
     double[] tue = new double[7];
@@ -61,7 +61,7 @@ public class MonthTimetable extends AppCompatActivity {
     double[] forSend = new double[30];
 
     int colored = 0;
-    int firstDay = getInt("firstDay");
+    int firstDay;
     AppCompatButton btn_ambiguous, btn_possible, btn_delete;
 
     String response;
@@ -74,21 +74,13 @@ public class MonthTimetable extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_month_timetable);
 
-        AppCompatButton btn_save = (AppCompatButton) findViewById(R.id.btn_save);
-        btn_save.setOnClickListener((new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MonthTimetable.this, ResultMonth.class);
-                startActivity(intent); //액티비티 이동
-            }
-        }));
 
         title = findViewById(R.id.title1);
         content = findViewById(R.id.detail_info);
 
         Intent intent = getIntent();
         code = intent.getExtras().getString("code");
+        firstDay = intent.getExtras().getInt("firstDay");
 
         URL = "http://59.18.221.32:5000/plan/timetable/" + code;
         sendRequest(URL);
@@ -240,7 +232,7 @@ public class MonthTimetable extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i=0; i<5; i++){
+                for (int i=0; i<6; i++){
                     Drawable.ConstantState state_a = btn_a[i].getBackground().getConstantState();
                     if (state_a.equals(poss)){
                         sun[i] = 1;
@@ -298,7 +290,7 @@ public class MonthTimetable extends AppCompatActivity {
                         sat[i] = 0;
                     }
                 }
-                for (int j=0; j<5; j++){
+                for (int j=0; j<6; j++){
                     int index = j*7;
                     result[index] = sun[j];
                     result[index+1] = mon[j];
@@ -308,12 +300,15 @@ public class MonthTimetable extends AppCompatActivity {
                     result[index+5] = fri[j];
                     result[index+6] = sat[j];
                 }
-                System.out.println(Arrays.toString(result));
                 for (int i=0; i<30; i++){
                     forSend[i] = result[i+firstDay];
                 }
+                System.out.println(Arrays.toString(result));
+                System.out.println(Arrays.toString(forSend));
+                String forsendS = Arrays.toString(forSend);
+                System.out.println(forsendS);
                 try{
-                    inputJSON.put("timetable_array", forSend);
+                    inputJSON.put("timetable_array", forsendS);
                 } catch (JSONException e){
                     e.printStackTrace();
                 }
@@ -369,7 +364,7 @@ public class MonthTimetable extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     int startDay = jsonObject.getInt("first_day");
                     String titleS = jsonObject.getString("title");
-                    String contentS = jsonObject.getString("content");
+                    String contentS = jsonObject.getString("detail");
 
                     MonthTimetable.this.runOnUiThread(new Runnable() {
                         @Override
@@ -404,7 +399,7 @@ public class MonthTimetable extends AppCompatActivity {
                     int c=(startDay/1000)%100;
                     System.out.println(c);
 
-                    for(int i=0;i<31;i++){
+                    for(int i=0;i<30;i++){
                         int finalB = b;
                         int finalA = a;
                         MonthTimetable.this.runOnUiThread(new Runnable() {
@@ -424,19 +419,12 @@ public class MonthTimetable extends AppCompatActivity {
                             a=0;
                         a++;
                     }
-                    setString("firstDay", startDay);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 return null;
-            }
-            private void setString(String key, int value){
-                SharedPreferences prefs = MonthTimetable.this.getSharedPreferences("firstDay", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putInt(key, value);
-                editor.commit();
             }
             public String getString(String key) {
                 SharedPreferences prefs = MonthTimetable.this.getSharedPreferences("session", Context.MODE_PRIVATE);
@@ -449,7 +437,6 @@ public class MonthTimetable extends AppCompatActivity {
     }
     public void sendRequestResult(JSONObject jsonObject, String URL){
         class sendData extends AsyncTask<Void, Void, String> {
-            String makedPer;
 
             @Override
             protected void onPreExecute() {super.onPreExecute();}
@@ -497,13 +484,11 @@ public class MonthTimetable extends AppCompatActivity {
                         try{
                             JSONObject resJSON = new JSONObject(response);
                             code = resJSON.getString("code");
-                            makedPer = resJSON.getString("duration");
                         } catch (JSONException e){
                             e.printStackTrace();
                         }
                         Intent intent = new Intent(MonthTimetable.this, ResultMonth.class);
                         intent.putExtra("code", code);
-                        intent.putExtra("period", makedPer);
                         startActivity(intent);
                     } else {
                         MonthTimetable.this.runOnUiThread(new Runnable() {
