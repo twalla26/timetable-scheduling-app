@@ -23,21 +23,24 @@ class User(db.Model):
 class Plan(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(150), nullable=False)
-    first_day = db.Column(db.String(150), nullable=False)
+    first_day = db.Column(db.Integer, nullable=False)
     duration = db.Column(db.String(150), nullable=False)
     needed_time = db.Column(db.String(150), nullable=False)
     detail = db.Column(db.Text(), nullable=True)
+
     code = db.Column(db.String(150), unique = True, nullable=False)
     create_date = db.Column(db.DateTime(), nullable=False)
+
     member = db.relationship('User', secondary=plan_member, backref=db.backref('plan_set'))
 
-    overlapped_schedule = db.Column(MutableList.as_mutable(PickleType), default=[])
+    overlapped_schedule = db.Column(db.PickleType())
+
     best_time = db.Column(db.Text(), nullable=True)
 
 
 class Schedule(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    timetable_array = db.Column(MutableList.as_mutable(PickleType), default=[])
+    timetable_array = db.Column(db.PickleType())
     create_date = db.Column(db.DateTime(), nullable=False)
     modify_date = db.Column(db.DateTime(), nullable=True)
 

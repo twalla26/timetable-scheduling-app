@@ -14,9 +14,8 @@ naming_convention = { # SQLite와 ORM을 함께 사용할 때 일어날 수 있�
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
     "pk": "pk_%(table_name)s"
 }
-
-
 db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention)) # SQLAlchemy 모듈을 통해 db 생성 + (SQLite + ORM) 오류 해결
+
 migrate = Migrate() # Migrate 모듈을 통해 migrate 생성
 # 전역변수로 db와 migrate 객체 생성 -> create_app 함수 안에서 app에 등록될 것.
 # 객체를 함수 밖에 생성하여, 블루프린트와 같은 다른 모듈에서도 사용할 수 있게 함.

@@ -31,7 +31,7 @@ def signup(): # 회원가입 함수
         else: # 이미 회원가입 되어있는 유저인 경우
             print(date)
             print("[로그]회원가입에 실패했습니다. (IP:", str(ip)+")")
-            return jsonify({"signup" : "error: user already exists"})
+            return jsonify({"error" : "user already exists"})
 
 
 @bp.route('/login/', methods=["POST"])
